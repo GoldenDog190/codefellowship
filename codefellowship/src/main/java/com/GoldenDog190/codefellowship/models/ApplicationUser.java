@@ -1,6 +1,7 @@
 package com.GoldenDog190.codefellowship.models;
 
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -22,6 +25,10 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     int dateOfBirth;
     String bio;
+
+    @CreationTimestamp
+    String body;
+    LocalDateTime createdAt;
 
     public void setApplicationUser(String username) {
         this.username = username;
@@ -45,6 +52,14 @@ public class ApplicationUser implements UserDetails {
 
     public void setBio(String bio){
         this.bio = bio;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 
 
@@ -79,6 +94,14 @@ public class ApplicationUser implements UserDetails {
         return bio;
     }
 
+    public String getBody() {
+        return body;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -98,4 +121,5 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
