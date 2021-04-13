@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <h2 th:text="'welcome' + ${username}"></h2>
+    <form action="/login" method="post">
+        <label for="username">username</label>
+        <input id="username" type="text" name="username">
+
+        <label for="password">password</label>
+        <input id="password" type="text" name="password">
+
+        <label for="firstname">first name</label>
+        <input id="firstname" type="text" name="firstname">
+
+        <label for="lastname">last name</label>
+        <input id="lastname" type="text" name="lastname">
+
+        <label for="dateofbirth">date of birth</label>
+        <input id="dateofbirth" type="text" name="dateofbirth">
+
+        <label for="bio">bio</label>
+        <input id="bio" type="text" name="bio">
+
+        <input type="submit" value="login">
+
+    </form>
+
+</body>
+</html>
