@@ -31,8 +31,6 @@ public class ApplicationUserController {
         applicationUser.setApplicationUser(lastName);
         applicationUser.setApplicationUser(String.valueOf(dateOfBirth));
         applicationUser.setApplicationUser(bio);
-        applicationUser.setApplicationUser(body);
-        applicationUser.setApplicationUser(String.valueOf(createdAt));
         return new RedirectView("/");
     }
 

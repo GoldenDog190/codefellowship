@@ -26,9 +26,7 @@ public class ApplicationUser implements UserDetails {
     int dateOfBirth;
     String bio;
 
-    @CreationTimestamp
-    String body;
-    LocalDateTime createdAt;
+
 
     public void setApplicationUser(String username) {
         this.username = username;
@@ -52,14 +50,6 @@ public class ApplicationUser implements UserDetails {
 
     public void setBio(String bio){
         this.bio = bio;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
     }
 
 
@@ -94,13 +84,6 @@ public class ApplicationUser implements UserDetails {
         return bio;
     }
 
-    public String getBody() {
-        return body;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
