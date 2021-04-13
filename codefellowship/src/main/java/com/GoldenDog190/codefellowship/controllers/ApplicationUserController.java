@@ -20,7 +20,7 @@ public class ApplicationUserController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
 
-    @PostMapping("/applicationuser/{id}")
+    @PostMapping("/applicationuser")
     public RedirectView createUser(String username, String password, String firstName, String lastName, int dateOfBirth, String bio, String body, LocalDateTime createdAt){
         password = passwordEncoder.encode(password);
         System.out.println("password= " + password);
