@@ -39,5 +39,14 @@ public class ApplicationUserController {
         return "login.html";
     }
 
+    @GetMapping("/index")
+    public String showSignUpPage(){
+        return "index.html";
+    }
+
+    @GetMapping("/applicationusers")
+    public String showUserPage(){
+        return "applicationusers.html";
+    }
 
 }
