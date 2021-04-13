@@ -18,7 +18,7 @@ public class ApplicationUserController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
 
-    @PostMapping("/applicationUser")
+    @PostMapping("/applicationuser/{id}")
     public RedirectView createUser(String username, String password, String firstName, String lastName, int dateOfBirth, String bio){
         password = passwordEncoder.encode(password);
         System.out.println("password= " + password);
@@ -36,4 +36,6 @@ public class ApplicationUserController {
     public String showLoginPage(){
         return "login.html";
     }
+
+
 }

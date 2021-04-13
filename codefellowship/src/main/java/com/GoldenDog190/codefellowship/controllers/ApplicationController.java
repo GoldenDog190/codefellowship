@@ -19,12 +19,12 @@ public class ApplicationController {
         return "splashpage.html";
     }
 
-    @GetMapping("/applicationUsers")
+    @GetMapping("/applicationusers")
     public String showUsers(Principal p, Model m){
-        System.out.println("p.getName() = " + p.getName());
+        System.out.println("p.getUsername = " + p.getName());
 
-        m.addAttribute("user", p.getName());
-        return "applicationUsers";
+        m.addAttribute("username", p.getName());
+        return "applicationusers";
     }
 
 }

@@ -9,26 +9,26 @@
 </head>
 <body>
     <h1>Users</h1>
-    <h2 th:text="'welcome' + ${user}"></h2>
+    <h2 th:text="'welcome' + ${username}"></h2>
     <a href="/logout">logout</a>
 
     <form action="/login" method="post">
         <label for="username">username</label>
         <input id="username" type="text" name="username">
 
-        <label for="password">username</label>
+        <label for="password">password</label>
         <input id="password" type="text" name="password">
 
-        <label for="firstname">username</label>
+        <label for="firstname">first name</label>
         <input id="firstname" type="text" name="firstname">
 
-        <label for="lastname">username</label>
+        <label for="lastname">last name</label>
         <input id="lastname" type="text" name="lastname">
 
-        <label for="dateofbirth">username</label>
+        <label for="dateofbirth">date of birth</label>
         <input id="dateofbirth" type="text" name="dateofbirth">
 
-        <label for="bio">username</label>
+        <label for="bio">bio</label>
         <input id="bio" type="text" name="bio">
 
         <input type="submit" value="signup">

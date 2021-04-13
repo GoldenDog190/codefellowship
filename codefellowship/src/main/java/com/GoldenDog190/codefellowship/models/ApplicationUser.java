@@ -43,6 +43,11 @@ public class ApplicationUser implements UserDetails {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public void setBio(String bio){
+        this.bio = bio;
+    }
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -55,7 +60,23 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return password;
+        return username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getBio() {
+        return bio;
     }
 
     @Override
