@@ -81,30 +81,30 @@ public class ApplicationUserController {
         return new RedirectView("/myprofile");
     }
 
-    @GetMapping("/index")
-    public String showSignUpPage(){
-        return "index.html";
-    }
+//    @GetMapping("/index")
+//    public String showSignUpPage(){
+//        return "index.html";
+//    }
 
     @PostMapping("/myprofile")
     public RedirectView createMyProfile(){
         return new RedirectView("/myprofile");
     }
 
-    @GetMapping("/myprofile")
-    public String showUserPage() {
-        return "userprofile.html";
-    }
+//    @GetMapping("/myprofile")
+//    public String showUserPage() {
+//        return "userprofile.html";
+//    }
 
     @PostMapping("/applicationusers")
     public RedirectView createAdminPage(){
         return new RedirectView("/applicationusers");
     }
 
-    @GetMapping("/applicationusers")
-    public String showAdminPage() {
-        return "applicationusers.html";
-    }
+//    @GetMapping("/applicationusers")
+//    public String showAdminPage() {
+//        return "applicationusers.html";
+//    }
 
     @GetMapping("/myprofile/{id}")
         public String showSingleUser(@PathVariable long id, Model m, Principal p) {

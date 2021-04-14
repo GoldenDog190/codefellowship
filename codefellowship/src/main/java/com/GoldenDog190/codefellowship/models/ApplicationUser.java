@@ -24,15 +24,14 @@ public class ApplicationUser implements UserDetails {
     String firstName;
     String lastName;
     int dateOfBirth;
-
-    @Lob
+    @Column(columnDefinition = "Text")
     public String bio;
 
-    @CreationTimestamp
+//    @CreationTimestamp
     public String body;
     public LocalDateTime createdAt;
 
-    @ManyToOne
+    @ManyToOne //(mappedBy = "post")
     ApplicationUser applicationUser;
 
     public void setApplicationUser(String username) {

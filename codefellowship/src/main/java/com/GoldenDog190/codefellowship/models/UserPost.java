@@ -14,7 +14,7 @@ public class UserPost {
 
     @Column(unique = true)
 
-    @CreationTimestamp
+//    @CreationTimestamp
     String body;
     LocalDateTime createdAt;
 
