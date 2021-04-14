@@ -1,4 +1,4 @@
-# Lab 17 - CodeFellowship Profiles with Login
+# Lab 17 - Spring Authorization
 
 ## Overview
 * Add login to the CodeFellowship app, and allow users to create posts.

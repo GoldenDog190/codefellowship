@@ -24,20 +24,20 @@ public class PostController {
     @Autowired
     PostRepository postRepository;
 
-    @PostMapping("/applicationusers")
+    @PostMapping("/myprofile")
     public RedirectView addPost(String body, LocalDateTime createdAt, long id) throws IOException {
         UserPost post = new UserPost(body, createdAt);
         ApplicationUser appUser = applicationUserRepository.getOne(id);
         postRepository.save(post);
         System.out.println("post = " + post.getId());
-        return new RedirectView("/applicationusers");
+        return new RedirectView("/myprofile");
     }
 
-    @GetMapping("/applicatiousers")
+    @GetMapping("/myprofile")
     public String postContent(Model m){
         List<UserPost> postsList = postRepository.findAll();
         m.addAttribute("post", postsList);
 
-        return "applicatiousers";
+        return "userprofile.html";
     }
 }

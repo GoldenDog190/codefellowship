@@ -4,4 +4,4 @@
 
 ## [Lab 16 - CodeFellowship Login, Profiles & Posts](readme/README-16.md)
 
-## [Lab 17](readme/README-17.md)
+## [Lab 17 - Spring Authorization](readme/README-17.md)

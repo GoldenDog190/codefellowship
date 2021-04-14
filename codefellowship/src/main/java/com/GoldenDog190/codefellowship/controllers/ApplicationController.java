@@ -19,12 +19,19 @@ public class ApplicationController {
         return "splashpage.html";
     }
 
+    
+
     @GetMapping("/applicationusers")
     public String showUsers(Principal p, Model m){
         System.out.println("p.getUsername = " + p.getName());
 
         m.addAttribute("username", p.getName());
         return "applicationusers";
+    }
+
+    @GetMapping("/*")
+    public String catchAll(){
+        return "userprofile.html";
     }
 
 }
