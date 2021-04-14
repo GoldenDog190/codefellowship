@@ -12,6 +12,8 @@ public class UserPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @Column(unique = true)
+
     @CreationTimestamp
     String body;
     LocalDateTime createdAt;

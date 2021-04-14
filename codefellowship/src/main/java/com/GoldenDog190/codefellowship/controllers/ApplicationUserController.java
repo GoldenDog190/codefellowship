@@ -47,7 +47,8 @@ public class ApplicationUserController {
         applicationUser.setApplicationUser(lastName);
         applicationUser.setApplicationUser(String.valueOf(dateOfBirth));
         applicationUser.setApplicationUser(bio);
-
+        applicationUser.setApplicationUser(body);
+        applicationUser.setApplicationUser(String.valueOf(createdAt));
 
         try{
             applicationUserRepository.save(applicationUser);
@@ -67,7 +68,7 @@ public class ApplicationUserController {
 
     @PostMapping("/login")
     public RedirectView createLogin(){
-        return new RedirectView("/login");
+        return new RedirectView("/myprofile");
     }
 
     @GetMapping("/login")
@@ -77,7 +78,7 @@ public class ApplicationUserController {
 
     @PostMapping("/index")
     public RedirectView createSignUpPage(){
-        return new RedirectView("/index");
+        return new RedirectView("/myprofile");
     }
 
     @GetMapping("/index")
@@ -124,9 +125,11 @@ public class ApplicationUserController {
     }
 
         @PutMapping("/myprofile")
-        public RedirectView updateBio(@PathVariable long id, String bio){
+        public RedirectView updateBio(@PathVariable long id, String bio, String body, LocalDateTime createdAt){
             ApplicationUser appUser = applicationUserRepository.findById(id).get();
             appUser.bio = bio;
+            appUser.body = body;
+            appUser.createdAt = createdAt;
             applicationUserRepository.save(appUser);
             return new RedirectView("/userprofile/" + id);
 

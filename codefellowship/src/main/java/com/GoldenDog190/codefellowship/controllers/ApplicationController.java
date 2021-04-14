@@ -11,15 +11,18 @@ import java.security.Principal;
 public class ApplicationController {
 
     @GetMapping("/")
-    public String ShowSplashPage(Principal p){
+    public String showHomePage(Principal p){
         System.out.println("p" + p);
         if(p != null){
             System.out.println("p.getName() = " + p.getName());
         }
-        return "splashpage.html";
+        return "index";
     }
 
-    
+    @GetMapping("/")
+    public String showSplashPage(Principal p){
+        return "splashpage.html";
+    }
 
     @GetMapping("/applicationusers")
     public String showUsers(Principal p, Model m){

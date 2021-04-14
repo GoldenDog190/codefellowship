@@ -11,7 +11,7 @@
     <h1  th:text="${ApplicationUser.username}">Specific Name : Lucy</h1>
 
     <div th:each="user : ${ApplicationUser}">
-        <h1>User Information: Admin page</h1>
+        <h1>User Information</h1>
         <h2 th:text="'welcome' + ${username}"></h2>
         <img th:src="" alt="User's Picture">
         <ul>
@@ -22,7 +22,7 @@
     </div>
 
 
-    <h2 th:if="${visitor}" th:text="${visitor.username}"> Welcome to my bio</h2>
+    <h2 th:if="${visitor}" th:text="${visitor.username}"> Welcome to my bio and posts</h2>
 
     <p th:text="${ApplicationUser.bio}"></p>
 
@@ -31,9 +31,13 @@
         <input type="submit" value="edit bio">
     </form>
 
-    <form>
+
+    <p th:text="${ApplicationUser.body}"></p>
+    <p th:text="${ApplicationUser.createAt}"></p>
+
+    <form th:unless="${visitor}" th:action="'/userprofile/'+${ApplicationUser.id}+'?_method=put'" method="post">
         <label for="post">Post Here</label>
-        <input id="post" type="text" name="post">
+        <input id="post" type="textarea" default="${ApplicationUser.body}+${ApplicationUser.createAt}"  name="posthere">
         <input type="submit" value="post">
     </form>
 
