@@ -11,11 +11,16 @@ import java.security.Principal;
 public class ApplicationController {
 
     @GetMapping("/")
-    public String ShowSplashPage(Principal p){
+    public String showHomePage(Principal p){
         System.out.println("p" + p);
         if(p != null){
             System.out.println("p.getName() = " + p.getName());
         }
+        return "index";
+    }
+
+    @GetMapping("/")
+    public String showSplashPage(Principal p){
         return "splashpage.html";
     }
 
@@ -25,6 +30,11 @@ public class ApplicationController {
 
         m.addAttribute("username", p.getName());
         return "applicationusers";
+    }
+
+    @GetMapping("/*")
+    public String catchAll(){
+        return "userprofile.html";
     }
 
 }
