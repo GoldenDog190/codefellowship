@@ -32,7 +32,7 @@ class CodefellowshipApplicationTests {
 				.andExpect(content().string(containsString("<div th:replace=\"./fragments/nav :: nav-bar\"></div>")))
 				.andExpect(content().string(containsString("</header>")))
 				.andExpect(content().string(containsString("<h1>Welcome! Please sign up by clicking the link below:</h1>")))
-				.andExpect(content().string(containsString("<h2 th:text=\"'welcome' + ${username}\"></h2>")))
+
 				.andExpect(status().isOk());
 	}
 
@@ -44,7 +44,6 @@ class CodefellowshipApplicationTests {
 				.andExpect(content().string(containsString("<div th:replace=\"./fragments/nav :: nav-bar\"></div>")))
 				.andExpect(content().string(containsString("</header>")))
 				.andExpect(content().string(containsString("<h1>Login</h1>")))
-				.andExpect(content().string(containsString("<h2 th:text=\"'welcome' + ${username}\"></h2>")))
 				.andExpect(content().string(containsString("<form action=\"/login\" method=\"post\">")))
 				.andExpect(content().string(containsString("<label for=\"username\">username</label>")))
 				.andExpect(content().string(containsString("<input id=\"username\" type=\"text\" name=\"username\">")))
@@ -69,7 +68,6 @@ class CodefellowshipApplicationTests {
 				.andExpect(content().string(containsString("<div th:replace=\"./fragments/nav :: nav-bar\"></div>")))
 				.andExpect(content().string(containsString("</header>")))
 				.andExpect(content().string(containsString("<h1>Users</h1>")))
-				.andExpect(content().string(containsString(" <a href=\"/logout\">logout</a>")))
 				.andExpect(content().string(containsString("<h2 th:if=\"${username}\" th:text=\"'welcome' + ${username}\"></h2>")))
 				.andExpect(content().string(containsString("<form action=\"/signup\" method=\"post\">")))
 				.andExpect(content().string(containsString("<label for=\"username\">username</label>")))
