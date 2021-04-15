@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <h1  th:text="${applicationuser.username}">Specific Name : Lucy</h1>
@@ -37,9 +38,60 @@
 
     <form th:unless="${visitor}" th:action="'/userprofile/'+${ApplicationUser.id}+'?_method=put'" method="post">
         <label for="post">Post Here</label>
-        <input id="post" type="textarea" default="${ApplicationUser.body}+${ApplicationUser.createAt}"  name="posthere">
+        <input id="post" type="text" default="${ApplicationUser.body}+${ApplicationUser.createAt}"  name="posthere">
         <input type="submit" value="post">
     </form>
+
+    <form action="/following" method="post">
+        <fieldset>
+            <legend>Add Follower</legend>
+            <label for="firstName">
+                First Name
+                <input id="firstName" type="text" name="firstName">
+            </label>
+
+            <label for="lastName">
+
+                <input id="lastName" type="text" name="lastName">
+            </label>
+            <input type="submit" value="add follow">
+        </fieldset>
+    </form>
+
+    <form action="/followersFeed" method="post">
+        <fieldset>
+            <legend>Follow</legend>
+            <select name="giverId">
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.firstName}"
+                        th:value="${followers.id}"></option>
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.lastName}"
+                        th:value="${followers.id}"></option>
+            </select>
+
+            <select name="receiverId">
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.firstName}"
+                        th:value="${followers.id}"></option>
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.lastName}"
+                        th:value="${followers.id}"></option>
+            </select>
+            <input type="submit" value="follow">
+        </fieldset>
+    </form>
+
+    <ul>
+        <li th:each="followers : ${applicationUser}">
+            <h3 th:text="'${followers.firstName}' + '${followers.lastName}'"> Hermione Olivia</h3>
+            <h4>I am a follower of</h4>
+            <ul>
+                <l th:each="giver : ${followers.usersFollowReceived}"
+                   th:text="'${followers.firstName}' + '${followers.lastName}'"> Lucy Goosey</l>
+            </ul>
+        </li>
+    </ul>
 
 </body>
 </html>
