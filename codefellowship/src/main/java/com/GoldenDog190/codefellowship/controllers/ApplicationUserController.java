@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.ui.Model;
 
+import static java.lang.Integer.valueOf;
+
 
 @Controller
 public class ApplicationUserController {
@@ -43,12 +45,12 @@ public class ApplicationUserController {
         ApplicationUser applicationUser = new ApplicationUser();
         applicationUser.setPassword(password);
         applicationUser.setApplicationUser(username);
-        applicationUser.setApplicationUser(firstName);
-        applicationUser.setApplicationUser(lastName);
-        applicationUser.setApplicationUser(String.valueOf(dateOfBirth));
-        applicationUser.setApplicationUser(bio);
-        applicationUser.setApplicationUser(body);
-        applicationUser.setApplicationUser(String.valueOf(createdAt));
+        applicationUser.setFirstName(firstName);
+        applicationUser.setLastName(lastName);
+        applicationUser.setDateOfBirth(valueOf(dateOfBirth));
+        applicationUser.setBio(bio);
+        applicationUser.setBody(body);
+        applicationUser.setCreatedAt(LocalDateTime.parse(String.valueOf(createdAt)));
 
         try{
             applicationUserRepository.save(applicationUser);
