@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+<header >
+    <div th:replace="./fragments/nav :: nav-bar"></div>
+</header>
+
     <h1>Welcome! Please sign up by clicking the link below:</h1>
     <h2 th:text="'welcome' + ${username}"></h2>
-        <a href="/login">Sign Up</a>
 </body>
 </html>

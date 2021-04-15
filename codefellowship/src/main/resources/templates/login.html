@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<header >
+    <div th:replace="./fragments/nav :: nav-bar"></div>
+</header>
+
     <h1>Login</h1>
     <h2 th:text="'welcome' + ${username}"></h2>
     <form action="/login" method="post">

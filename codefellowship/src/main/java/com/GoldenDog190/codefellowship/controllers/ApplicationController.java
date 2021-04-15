@@ -44,10 +44,11 @@ public class ApplicationController {
     }
 
     @PostMapping("/following")
-    public RedirectView showFollowers(String firstName, String lastName){
+    public RedirectView showFollowers(String firstName, String lastName, String url){
         ApplicationUser applicationUser = new ApplicationUser();
         applicationUser.setFirstName(firstName);
         applicationUser.setLastName(lastName);
+        applicationUser.setUrl(url);
         applicationUserRepository.save(applicationUser);
         return new RedirectView("/userprofile");
     }

@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1  th:text="${applicationuser.username}">Specific Name : Lucy</h1>
+<header >
+    <div th:replace="./fragments/nav :: nav-bar"></div>
+</header>
+
+    <h1  th:text="${ApplicationUser.username}">Specific Name : Lucy</h1>
 
     <div th:each="user : ${ApplicationUser}">
         <h1>User Information</h1>
-        <h2 th:text="'welcome' + ${username}"></h2>
+        <h2 th:text="'welcome' + ${user.username}"></h2>
         <img th:src="" alt="User's Picture">
         <ul>
             <li th:text="${user.firstName}">First Name</li>
@@ -65,8 +69,13 @@
                 <option th:each="followers : ${applicationUser}"
                         th:text="${followers.firstName}"
                         th:value="${followers.id}"></option>
+
                 <option th:each="followers : ${applicationUser}"
                         th:text="${followers.lastName}"
+                        th:value="${followers.id}"></option>
+
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.url}"
                         th:value="${followers.id}"></option>
             </select>
 
@@ -74,8 +83,13 @@
                 <option th:each="followers : ${applicationUser}"
                         th:text="${followers.firstName}"
                         th:value="${followers.id}"></option>
+
                 <option th:each="followers : ${applicationUser}"
                         th:text="${followers.lastName}"
+                        th:value="${followers.id}"></option>
+
+                <option th:each="followers : ${applicationUser}"
+                        th:text="${followers.url}"
                         th:value="${followers.id}"></option>
             </select>
             <input type="submit" value="follow">
@@ -84,11 +98,11 @@
 
     <ul>
         <li th:each="followers : ${applicationUser}">
-            <h3 th:text="'${followers.firstName}' + '${followers.lastName}'"> Hermione Olivia</h3>
+            <h3 th:text="'${followers.firstName}' + ' ' + '${followers.lastName}' + ' ' + '${followers.url}'"> Hermione Olivia</h3>
             <h4>I am a follower of</h4>
             <ul>
                 <l th:each="giver : ${followers.usersFollowReceived}"
-                   th:text="'${followers.firstName}' + '${followers.lastName}'"> Lucy Goosey</l>
+                   th:text="'${followers.firstName}' + ' ' + '${followers.lastName}' + ' ' + '${followers.url}'"> Lucy Goosey</l>
             </ul>
         </li>
     </ul>

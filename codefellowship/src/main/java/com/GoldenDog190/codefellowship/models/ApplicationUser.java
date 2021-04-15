@@ -26,6 +26,9 @@ public class ApplicationUser implements UserDetails {
     String firstName;
     String lastName;
     int dateOfBirth;
+
+    String url;
+
     @Column(columnDefinition = "Text")
     public String bio;
 
@@ -79,6 +82,13 @@ public class ApplicationUser implements UserDetails {
         this.createdAt = createdAt;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
