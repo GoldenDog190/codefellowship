@@ -23,19 +23,20 @@ public class ApplicationController {
         System.out.println("p" + p);
         if(p != null){
             System.out.println("p.getName() = " + p.getName());
+            m.addAttribute("user", p.getName());
         }
-        return "index";
+        return "index.html";
     }
 
     @GetMapping("/userprofile")
     public String showUsers(Principal p, Model m){
         System.out.println("p.getUsername = " + p.getName());
+        m.addAttribute("user", p.getName());
 
         List<ApplicationUser> applicationUsers = applicationUserRepository.findAll();
         m.addAttribute("followers", applicationUsers);
 
-        m.addAttribute("username", p.getName());
-        return "userprofile";
+        return "userprofile.html";
     }
 
     @GetMapping("/*")

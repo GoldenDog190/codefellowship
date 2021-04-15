@@ -45,8 +45,9 @@
 
     <form th:unless="${visitor}" th:action="'/userprofile/'+${ApplicationUser.id}+'?_method=put'" method="post">
         <label for="post">Post Here</label>
-        <input id="post" type="text" default="'${ApplicationUser.body}' + ' ' + ${ApplicationUser.createAt} +
-         ' ' + '${ApplicationUser.firstName}' + ' ' + '${ApplicationUser.lastName}' + ' ' + '${ApplicationUser.url}'"  name="posthere">
+        <input id="post" type="text" default="'${ApplicationUser.body}' + ' ' + ${ApplicationUser.createAt}
+        + ' ' + '${ApplicationUser.firstName}' + ' ' + '${ApplicationUser.lastName}'
+         + ' ' + '${ApplicationUser.url}'"  name="posthere">
         <input type="submit" value="post">
     </form>
 

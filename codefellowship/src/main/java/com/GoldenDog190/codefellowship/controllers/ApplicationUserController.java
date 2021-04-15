@@ -40,10 +40,10 @@ public class ApplicationUserController {
 
     @PostMapping("/applicationuser")
     public RedirectView createUser(String username, String password, String firstName, String lastName, int dateOfBirth, String bio, String body, LocalDateTime createdAt, HttpServletRequest request){
-        password = passwordEncoder.encode(password);
-        System.out.println("password= " + password);
+        String passwordEncoded = passwordEncoder.encode(password);
+        System.out.println("password= " + passwordEncoded);
         ApplicationUser applicationUser = new ApplicationUser();
-        applicationUser.setPassword(password);
+        applicationUser.setPassword(passwordEncoded);
         applicationUser.setApplicationUser(username);
         applicationUser.setFirstName(firstName);
         applicationUser.setLastName(lastName);
@@ -72,6 +72,11 @@ public class ApplicationUserController {
     @GetMapping("/login")
     public String showLoginPage(){
         return "login.html";
+    }
+
+    @GetMapping("/index")
+    public String showSignUpPage(){
+        return "index.html";
     }
 
 
