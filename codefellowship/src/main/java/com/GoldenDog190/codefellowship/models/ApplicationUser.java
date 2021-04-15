@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -25,15 +27,28 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     int dateOfBirth;
 
-    @Lob
+    String url;
+
+    @Column(columnDefinition = "Text")
     public String bio;
 
-    @CreationTimestamp
+//    @CreationTimestamp
     public String body;
     public LocalDateTime createdAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     ApplicationUser applicationUser;
+
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="user_followers",
+            joinColumns = {@JoinColumn(name="giver")},
+            inverseJoinColumns = {@JoinColumn(name="receiver")}
+    )
+    Set<ApplicationUser> usersFollowTo = new HashSet<>();
+
+    @ManyToMany(mappedBy = "usersFollowTo")
+    Set<ApplicationUser> usersFollowReceived = new HashSet<>();
 
     public void setApplicationUser(String username) {
         this.username = username;
@@ -67,6 +82,13 @@ public class ApplicationUser implements UserDetails {
         this.createdAt = createdAt;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -105,6 +127,18 @@ public class ApplicationUser implements UserDetails {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Set<ApplicationUser> getUsersFollowTo() {
+        return usersFollowTo;
+    }
+
+    public Set<ApplicationUser> getUsersFollowReceived() {
+        return usersFollowReceived;
     }
 
     @Override

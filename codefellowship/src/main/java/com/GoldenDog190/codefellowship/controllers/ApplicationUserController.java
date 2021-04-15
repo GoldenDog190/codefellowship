@@ -66,45 +66,12 @@ public class ApplicationUserController {
         return new RedirectView("/");
     }
 
-    @PostMapping("/login")
-    public RedirectView createLogin(){
-        return new RedirectView("/myprofile");
-    }
 
     @GetMapping("/login")
     public String showLoginPage(){
         return "login.html";
     }
 
-    @PostMapping("/index")
-    public RedirectView createSignUpPage(){
-        return new RedirectView("/myprofile");
-    }
-
-    @GetMapping("/index")
-    public String showSignUpPage(){
-        return "index.html";
-    }
-
-    @PostMapping("/myprofile")
-    public RedirectView createMyProfile(){
-        return new RedirectView("/myprofile");
-    }
-
-    @GetMapping("/myprofile")
-    public String showUserPage() {
-        return "userprofile.html";
-    }
-
-    @PostMapping("/applicationusers")
-    public RedirectView createAdminPage(){
-        return new RedirectView("/applicationusers");
-    }
-
-    @GetMapping("/applicationusers")
-    public String showAdminPage() {
-        return "applicationusers.html";
-    }
 
     @GetMapping("/myprofile/{id}")
         public String showSingleUser(@PathVariable long id, Model m, Principal p) {
@@ -124,7 +91,7 @@ public class ApplicationUserController {
         return "userprofile.html";
     }
 
-        @PutMapping("/myprofile")
+        @PutMapping("/myprofile/{id}")
         public RedirectView updateBio(@PathVariable long id, String bio, String body, LocalDateTime createdAt){
             ApplicationUser appUser = applicationUserRepository.findById(id).get();
             appUser.bio = bio;
