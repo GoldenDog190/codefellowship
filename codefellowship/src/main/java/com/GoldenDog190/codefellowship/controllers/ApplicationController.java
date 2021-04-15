@@ -19,15 +19,15 @@ public class ApplicationController {
 
 
     @GetMapping("/")
-    public String showHomePage(Principal p){
+    public String showHomePage(Principal p, Model m){
         System.out.println("p" + p);
         if(p != null){
             System.out.println("p.getName() = " + p.getName());
         }
-        return "splashpage.html";
+        return "index";
     }
 
-    @GetMapping("/applicationusers")
+    @GetMapping("/userprofile")
     public String showUsers(Principal p, Model m){
         System.out.println("p.getUsername = " + p.getName());
 
@@ -35,7 +35,7 @@ public class ApplicationController {
         m.addAttribute("followers", applicationUsers);
 
         m.addAttribute("username", p.getName());
-        return "applicationusers";
+        return "userprofile";
     }
 
     @GetMapping("/*")
