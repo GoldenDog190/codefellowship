@@ -10,11 +10,14 @@
 </head>
 <body>
 
-<header>
-    <div th:replace="./fragments/nav :: nav-bar"></div>
-</header>
+    <header>
+        <li><a href="/index">Sign Up</a></li>
+        <li><a href="/login">Login</a></li>
+    </header>
 
-    <h1>Welcome! Please sign up by clicking the link below:</h1>
-    <h2 th:text="'welcome' + ${username}"></h2>
+    <h1>Welcome to the site!</h1>
+    <h2>Please sign up or login by clicking the links above.</h2>
+    <p>This site is a social media site where you can sign up, sign in,
+        <br /> make your own profile, make posts, and follow other profiles.</p>
 </body>
 </html>

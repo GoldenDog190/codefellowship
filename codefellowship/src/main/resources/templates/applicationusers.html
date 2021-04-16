@@ -11,11 +11,11 @@
 <body>
 <header >
     <div th:replace="./fragments/nav :: nav-bar"></div>
+    <h2 th:text="'welcome' + ${user}"></h2>
 </header>
 
     <div th:each="user : ${ApplicationUser}">
-    <h1>User Information: Admin page</h1>
-    <h2 th:text="'welcome' + ${user.username}"></h2>
+    <h1>User Information: Admin page only</h1>
     <img th:src="" alt="User's Picture">
         <ul>
             <li th:text="${user.firstName}">First Name</li>
@@ -25,6 +25,5 @@
         </ul>
     </div>
 
-    <a href="/logout">logout</a>
 </body>
 </html>

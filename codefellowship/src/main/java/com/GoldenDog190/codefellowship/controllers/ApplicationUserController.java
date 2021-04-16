@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.ui.Model;
 
+import static java.lang.Integer.valueOf;
+
 
 @Controller
 public class ApplicationUserController {
@@ -38,17 +40,17 @@ public class ApplicationUserController {
 
     @PostMapping("/applicationuser")
     public RedirectView createUser(String username, String password, String firstName, String lastName, int dateOfBirth, String bio, String body, LocalDateTime createdAt, HttpServletRequest request){
-        password = passwordEncoder.encode(password);
-        System.out.println("password= " + password);
+        String passwordEncoded = passwordEncoder.encode(password);
+        System.out.println("password= " + passwordEncoded);
         ApplicationUser applicationUser = new ApplicationUser();
-        applicationUser.setPassword(password);
+        applicationUser.setPassword(passwordEncoded);
         applicationUser.setApplicationUser(username);
-        applicationUser.setApplicationUser(firstName);
-        applicationUser.setApplicationUser(lastName);
-        applicationUser.setApplicationUser(String.valueOf(dateOfBirth));
-        applicationUser.setApplicationUser(bio);
-        applicationUser.setApplicationUser(body);
-        applicationUser.setApplicationUser(String.valueOf(createdAt));
+        applicationUser.setFirstName(firstName);
+        applicationUser.setLastName(lastName);
+        applicationUser.setDateOfBirth(valueOf(dateOfBirth));
+        applicationUser.setBio(bio);
+        applicationUser.setBody(body);
+        applicationUser.setCreatedAt(LocalDateTime.parse(String.valueOf(createdAt)));
 
         try{
             applicationUserRepository.save(applicationUser);
@@ -71,6 +73,11 @@ public class ApplicationUserController {
     public String showLoginPage(){
         return "login.html";
     }
+
+//    @GetMapping("/index")
+//    public String showSignUpPage(){
+//        return "index.html";
+//    }
 
 
     @GetMapping("/myprofile/{id}")

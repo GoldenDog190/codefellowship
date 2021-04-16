@@ -1,4 +1,30 @@
 body{
-background-color: blue;
-color: green;
+background-color: bisque;  
+color: rgb(10, 28, 50);
+text-align: center;
+}
+
+header{
+  background-color: cadetblue;
+  color: rgb(17, 48, 75);
+}
+
+h1{
+  background-color: aquamarine;
+  color: rgb(10, 28, 50);
+}
+
+h2{
+  background-color: cadetblue;
+  color: rgb(17, 48, 75);
+}
+
+p{
+  background-color: aquamarine;
+  color: rgb(10, 28, 50);
+}
+
+form{
+  background-color: rgb(76, 174, 148);
+  color: rgb(17, 48, 75);
 }
