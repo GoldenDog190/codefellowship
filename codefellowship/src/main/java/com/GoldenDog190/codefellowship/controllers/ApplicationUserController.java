@@ -74,10 +74,10 @@ public class ApplicationUserController {
         return "login.html";
     }
 
-    @GetMapping("/index")
-    public String showSignUpPage(){
-        return "index.html";
-    }
+//    @GetMapping("/index")
+//    public String showSignUpPage(){
+//        return "index.html";
+//    }
 
 
     @GetMapping("/myprofile/{id}")

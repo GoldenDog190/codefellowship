@@ -28,6 +28,11 @@ public class ApplicationController {
         return "index.html";
     }
 
+    @GetMapping("/home")
+        public String goToHome(){
+        return "splashpage.html";
+    }
+
     @GetMapping("/userprofile")
     public String showUsers(Principal p, Model m){
         System.out.println("p.getUsername = " + p.getName());

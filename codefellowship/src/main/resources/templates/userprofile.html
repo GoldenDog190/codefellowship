@@ -13,7 +13,7 @@
     <div th:replace="./fragments/nav :: nav-bar"></div>
 </header>
 
-    <h1  th:text="${ApplicationUser.username}">Specific Name : Lucy</h1>
+    <h1  th:text="${username}">Specific Name : Lucy</h1>
 
     <div th:each="user : ${ApplicationUser}">
         <h1>User Information</h1>
@@ -29,7 +29,7 @@
 
     <h2 th:if="${visitor}" th:text="${visitor.username}"> Welcome to my bio and posts</h2>
 
-    <p th:text="${ApplicationUser.bio}"></p>
+    <p th:text="${user.bio}"></p>
 
     <form th:unless="${visitor}" th:action="'/userprofile/'+${ApplicationUser.id}+'?_method=put'" method="post">
         <input type="textarea" default="${ApplicationUser.bio}" name="bio">

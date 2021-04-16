@@ -29,10 +29,12 @@ class CodefellowshipApplicationTests {
 		mockMvc.perform(get("/"))
 				.andDo(print())
 				.andExpect(content().string(containsString("<header>")))
-				.andExpect(content().string(containsString("<div th:replace=\"./fragments/nav :: nav-bar\"></div>")))
+				.andExpect(content().string(containsString("<li><a href=\"/index\">Sign Up</a></li>")))
+				.andExpect(content().string(containsString("<li><a href=\"/login\">Login</a></li>")))
 				.andExpect(content().string(containsString("</header>")))
-				.andExpect(content().string(containsString("<h1>Welcome! Please sign up by clicking the link below:</h1>")))
-
+				.andExpect(content().string(containsString("<h2>Please sign up or login by clicking the links above.</h2>")))
+				.andExpect(content().string(containsString(" <p>This site is a social media site where you can sign up, sign in,\n" +
+						"        <br /> make your own profile, make posts, and follow other profiles.</p>")))
 				.andExpect(status().isOk());
 	}
 
