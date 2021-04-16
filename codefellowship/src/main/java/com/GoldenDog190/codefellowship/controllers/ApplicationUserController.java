@@ -49,8 +49,6 @@ public class ApplicationUserController {
         applicationUser.setLastName(lastName);
         applicationUser.setDateOfBirth(dateOfBirth);
         applicationUser.setBio(bio);
-        applicationUser.setBody(body);
-        applicationUser.setCreatedAt(createdAt);
 
         try{
             applicationUserRepository.save(applicationUser);
@@ -76,7 +74,7 @@ public class ApplicationUserController {
 
     @GetMapping("/index")
     public String showSignUpPage(){
-        return "index.html";
+        return "index";
     }
 
 
@@ -95,7 +93,7 @@ public class ApplicationUserController {
             visitor.setApplicationUser("Guest");
             m.addAttribute("visitor", visitor);
         }
-        return "userprofile.html";
+        return "userprofile";
     }
 
         @PutMapping("/myprofile/{id}")
