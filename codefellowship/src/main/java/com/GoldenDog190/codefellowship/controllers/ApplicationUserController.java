@@ -38,7 +38,7 @@ public class ApplicationUserController {
     AuthenticationManager authenticationManager;
 
 
-    @PostMapping("/applicationuser")
+    @PostMapping("/signup")
     public RedirectView createUser(String username, String password, String firstName, String lastName, int dateOfBirth, String bio, String body, LocalDateTime createdAt, HttpServletRequest request){
         String passwordEncoded = passwordEncoder.encode(password);
         System.out.println("password= " + passwordEncoded);
@@ -47,10 +47,10 @@ public class ApplicationUserController {
         applicationUser.setApplicationUser(username);
         applicationUser.setFirstName(firstName);
         applicationUser.setLastName(lastName);
-        applicationUser.setDateOfBirth(valueOf(dateOfBirth));
+        applicationUser.setDateOfBirth(dateOfBirth);
         applicationUser.setBio(bio);
         applicationUser.setBody(body);
-        applicationUser.setCreatedAt(LocalDateTime.parse(String.valueOf(createdAt)));
+        applicationUser.setCreatedAt(createdAt);
 
         try{
             applicationUserRepository.save(applicationUser);
@@ -74,10 +74,10 @@ public class ApplicationUserController {
         return "login.html";
     }
 
-//    @GetMapping("/index")
-//    public String showSignUpPage(){
-//        return "index.html";
-//    }
+    @GetMapping("/index")
+    public String showSignUpPage(){
+        return "index.html";
+    }
 
 
     @GetMapping("/myprofile/{id}")
