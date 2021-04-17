@@ -55,4 +55,5 @@ public class UserPost {
     public void setId(long id) {
         this.id = id;
     }
+
 }

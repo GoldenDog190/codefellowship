@@ -36,6 +36,8 @@ public class ApplicationUser implements UserDetails {
     public String body;
     public LocalDateTime createdAt;
 
+    String name;
+
     @ManyToOne(cascade = CascadeType.REMOVE)
     ApplicationUser applicationUser;
 
@@ -84,6 +86,14 @@ public class ApplicationUser implements UserDetails {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setUrl(String url) {
@@ -160,5 +170,6 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 
 }

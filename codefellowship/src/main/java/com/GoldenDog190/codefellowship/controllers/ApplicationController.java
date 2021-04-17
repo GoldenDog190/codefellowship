@@ -1,6 +1,8 @@
 package com.GoldenDog190.codefellowship.controllers;
 import com.GoldenDog190.codefellowship.models.ApplicationUserRepository;
 import com.GoldenDog190.codefellowship.models.ApplicationUser;
+import com.GoldenDog190.codefellowship.models.PostRepository;
+import com.GoldenDog190.codefellowship.models.UserPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -16,6 +19,9 @@ import java.util.List;
 public class ApplicationController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
+
+    @Autowired
+    PostRepository postRepository;
 
 
     @GetMapping("/")
@@ -44,19 +50,30 @@ public class ApplicationController {
         return "userprofile.html";
     }
 
+    @PostMapping("/addPost")
+    public RedirectView addPost(String body,  LocalDateTime createdAt, Long id){
+        ApplicationUser user = applicationUserRepository.findById(id).get();
+        user.setBody(body);
+        user.setCreatedAt(createdAt);
+        UserPost post = new UserPost();
+        postRepository.save(post);
+        return new RedirectView("/userprofile");
+    }
+
     @GetMapping("/*")
     public String catchAll(){
         return "userprofile.html";
     }
 
     @PostMapping("/following")
-    public RedirectView showFollowers(String firstName, String lastName, String url){
-        ApplicationUser applicationUser = new ApplicationUser();
-        applicationUser.setFirstName(firstName);
-        applicationUser.setLastName(lastName);
-        applicationUser.setUrl(url);
-        applicationUserRepository.save(applicationUser);
-        return new RedirectView("/userprofile");
+    public RedirectView showFollowers(String name){
+
+        ApplicationUser following = new ApplicationUser();
+        following.setName(name);
+        ApplicationUser appUser = applicationUserRepository.findByUsername(name);
+
+        applicationUserRepository.save(appUser);
+        return new RedirectView("/following");
     }
 
     @PostMapping("/followersFeed")
@@ -68,6 +85,6 @@ public class ApplicationController {
 
         applicationUserRepository.save(receiver);
 
-        return new RedirectView("/userprofile");
+        return new RedirectView("/following");
     }
 }
